@@ -1,38 +1,63 @@
 <!DOCTYPE html>
-<html>
-    <h1>My resume</h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            text-align: center;
+        }
+        section {
+            margin: 20px;
+        }
+        img {
+            max-width: 150px;
+            border-radius: 50%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
 <body>
-    <div id="header"></div>
-    <div class="left"></div>
-    <div class="stuff">
-        <br><br>
-        <h3>Ishwarya N</h3>
-        <hr/>
-        <br>
-        <p class="="head">Eduction</p>
-        <style>
-            table, th, td {
-  border: 1px solid black;
-}
-table.center {
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
-<table class="center">
-  <tr>
-    <th>Month</th>
-    <th>Savings</th>
-  </tr>
-  <tr>
-    <td>January</td>
-    <td>$100</td>
-  </tr>
-  <tr>
-    <td>February</td>
-    <td>$80</td>
-  </tr>
-</table>
-    </div>
+
+    <header>
+        <h1>Your Name</h1>
+        <img src="your-profile-image.jpg" alt="Your Profile Image">
+    </header>
+
+    <section>
+        <h2>Education</h2>
+        <table>
+            <tr>
+                <th>Degree</th>
+                <th>Institution</th>
+                <th>Year</th>
+            </tr>
+            <tr>
+                <td>Bachelor's in Computer Science</td>
+                <td>Thiagarajar college of engineering </td>
+                <td>2026</td>
+            </tr>
+            <!-- Add more rows for additional education entries -->
+        </table>
+    </section>
+
+    <!-- Add more sections for other resume details like experience, skills, etc. -->
+
 </body>
 </html>
