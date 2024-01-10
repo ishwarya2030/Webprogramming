@@ -16,8 +16,14 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open resume.html",
+            "name": "Open newpro.html",
             "file": "c:\\Users\\ACER\\mygitproject\\Webprogramming-1\\newpro.html"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Open resume.html",
+            "file": "c:\\Users\\ACER\\mygitproject\\Webprogramming-1\\resume.html"
         }
     ]
 }
