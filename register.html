@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="validation.js"></script>
+    <link rel="stylesheet" href="register.css">
+
+</head>
+<body>
+
+    <form onsubmit="return validateRegistrationForm()">
+        <label for="profile-icon">Select Profile Icon:</label>
+        <input type="file" id="profile-icon" name="profile-icon" accept="image/*">
+
+        <div class="name-inputs">
+            <div class="input-group">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" name="first-name" required>
+            </div>
+            <div class="input-group">
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" name="last-name" required>
+            </div>
+        </div>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <div class="gender-inputs">
+            <label>Gender:</label>
+            <div class="radio-group">
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Male</label>
+
+                <input type="radio" id="female" name="gender" value="female" required>
+                <label for="female">Female</label>
+
+                <input type="radio" id="other" name="gender" value="other" required>
+                <label for="other">Other</label>
+            </div>
+        </div>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+
+        <div class="subscribe-section">
+            <input type="checkbox" id="subscribe" name="subscribe"> Subscribe to receive information through email
+        </div>
+
+        <div class="terms-and-conditions">
+            <input type="checkbox" id="agree-terms" name="agree-terms" required>
+            <label for="agree-terms">I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a></label>
+        </div>
+
+        <button type="submit">Register</button>
+        <button type="reset">Reset</button>
+        <div class="login-link">
+            <p>already has a account then <a href="login.html">click here</a></p>
+
+        </div>
+
+    </form>
+
+</body>
+</html>
