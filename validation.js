@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
         check: function() {
             if (passwordInput) {
                 passwordInput.addEventListener('keydown', function() {
-                    // Implement password strength check and provide feedback to the user
                     console.log('Password strength: ' + PasswordStrength.calculateStrength(this.value));
                 });
             } else {
@@ -46,8 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         calculateStrength: function(password) {
-            // Implement password strength check logic here
-            return 'Medium'; // Placeholder value
+            return 'Medium'; 
         }
     };
 
@@ -57,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const termsLabel = document.querySelector('.terms-and-conditions label');
             if (agreeTermsCheckbox && termsLabel) {
                 agreeTermsCheckbox.addEventListener('change', function() {
-                    // Update the display to show a checkmark icon when the user agrees to the terms and conditions
                     if (this.checked) {
                         termsLabel.innerHTML = 'I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a> &#10003;';
                     } else {
