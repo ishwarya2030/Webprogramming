@@ -1,77 +1,103 @@
-function validateLoginForm() {
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const profileIconInput = document.getElementById('profile-icon');
+    const firstNameInput = document.getElementById('first-name');
+    const lastNameInput = document.getElementById('last-name');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const registerForm = document.querySelector('form');
+    const ProfileIcon = {
+        preview: function() {
+            if (profileIconInput) {
+                profileIconInput.addEventListener('mouseover', function() {
+                    console.log('Mouse over profile icon input');
+                });
+            } else {
+                console.error('Profile icon input element not found.');
+            }
+        }
+    };
 
-    if (email.trim() === '' || password.trim() === '') {
-        alert('Please enter both email and password.');
-        return false;
-    }
+    const InputFields = {
+        highlight: function() {
+            const inputFields = document.querySelectorAll('input');
+            inputFields.forEach(function(input) {
+                input.addEventListener('focus', function() {
+                    
+                    this.style.border = '2px solid #007bff';
+                });
+                input.addEventListener('blur', function() {
 
-   
-    return true;
-}
+                    this.style.border = '1px solid #ccc';
+                });
+            });
+        }
+    };
 
-function validateLoginForm() {
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
+    const PasswordStrength = {
+        check: function() {
+            if (passwordInput) {
+                passwordInput.addEventListener('keydown', function() {
+                    // Implement password strength check and provide feedback to the user
+                    console.log('Password strength: ' + PasswordStrength.calculateStrength(this.value));
+                });
+            } else {
+                console.error('Password input element not found.');
+            }
+        },
+        calculateStrength: function(password) {
+            // Implement password strength check logic here
+            return 'Medium'; // Placeholder value
+        }
+    };
 
-    if (email.trim() === '' || password.trim() === '') {
-        alert('Please enter both email and password.');
-        return false;
-    }
+    const TermsAgreement = {
+        display: function() {
+            const agreeTermsCheckbox = document.getElementById('agree-terms');
+            const termsLabel = document.querySelector('.terms-and-conditions label');
+            if (agreeTermsCheckbox && termsLabel) {
+                agreeTermsCheckbox.addEventListener('change', function() {
+                    // Update the display to show a checkmark icon when the user agrees to the terms and conditions
+                    if (this.checked) {
+                        termsLabel.innerHTML = 'I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a> &#10003;';
+                    } else {
+                        termsLabel.innerHTML = 'I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>';
+                    }
+                });
+            } else {
+                console.error('Terms agreement elements not found.');
+            }
+        }
+    };
 
-   
+    const FormSubmission = {
+        submitHandler: function() {
+            if (registerForm) {
+                registerForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent form submission
+                    // Perform form validation and submission logic
+                    if (FormSubmission.validate()) {
+                        console.log('Form submitted successfully!');
+                        // Submit the form if all validations pass
+                        this.submit();
+                    } else {
+                        console.log('Form validation failed. Please correct the errors.');
+                    }
+                });
+            } else {
+                console.error('Registration form element not found.');
+            }
+        },
+        validate: function() {
+            // Implement form validation logic here
+            return true; // Placeholder value
+        }
+    };
 
-    return true;
-}
-
-function validateRegistrationForm() {
-    const profileIcon = document.getElementById('profile-icon').value;
-    const firstName = document.getElementById('first-name').value;
-    const lastName = document.getElementById('last-name').value;
-    const email = document.getElementById('email').value;
-    const gender = document.querySelector('input[name="gender"]:checked');
-    const dob = document.getElementById('dob').value;
-    const phone = document.getElementById('phone').value;
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirm-password').value;
-    const subscribe = document.getElementById('subscribe').checked;
-    const agreeTerms = document.getElementById('agree-terms').checked;
-
-    // Email validation regex
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!profileIcon || !firstName || !lastName || !email || !gender || !dob || !phone || !username || !password || !confirmPassword) {
-        alert('Please fill in all the required fields.');
-        return false;
-    }
-
-    if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address.');
-        return false;
-    }
-
-    // Password validation: at least 8 characters, one uppercase letter, one lowercase letter, one digit
-    const passwordRegex = /^(?=.[a-z])(?=.[A-Z])(?=.*\d).{8,}$/;
-
-    if (!passwordRegex.test(password))
-    {
-        alert('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit.');
-        return false;
-    }
-
-    if (password !== confirmPassword) {
-        alert('Password and Confirm Password do not match.');
-        return false;
-    }
-
-    if (!agreeTerms) {
-        alert('Please agree to the Terms and Conditions.');
-        return false;
-    }
-
-    // Add additional validation logic if needed
-
-    return true;
-}
+    // Initialize objects and event listeners
+    ProfileIcon.preview();
+    InputFields.highlight();
+    PasswordStrength.check();
+    TermsAgreement.display();
+    FormSubmission.submitHandler();
+});
