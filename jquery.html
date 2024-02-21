@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Selling Site</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+       /* CSS Styles for Art Selling Site */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    
+}
+
+.artwork {
+    width: 300px;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.artwork img {
+    width: 100%;
+    height: auto;
+}
+
+.artwork p {
+    margin: 10px 0;
+}
+
+.buy-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.buy-button:hover {
+    background-color: #45a049;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#checkout-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 30px;
+}
+
+#checkout-button:hover {
+    background-color: #45a049;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Art Gallery</h1>
+    </header>
+    <div class="container">
+        <div class="artwork">
+            <img src="art1.png" alt="Artwork 1">
+            <p>Description:</p>
+            AI art <br>
+            <p>Art done  by: Mrs.YYY</p>
+            <br>
+            <p>Rating: 4.5</p>
+            <br>
+            <p>Price:$80</p>
+            <button class="buy-button" data-artwork="artwork1">Buy Now</button>
+        </div>
+        <div class="artwork">
+            <img src="art2.png" alt="Artwork 2">
+            <p>Description: </p>
+                <br>
+                AI art
+                <br>  
+                <p>Art done by Mr.XXX </p>
+                <br>
+                <p>Rating:4.5</p>
+                <br>
+                <p>Price:$75</p>
+           
+            <button class="buy-button" data-artwork="artwork2">Buy Now</button>
+        </div>
+        <div class="artwork">
+            <img src="artt4.avif" alt="Artwork 2">
+            <p>Description: </p>
+                <br>
+                minimalist art
+                <br>  
+                <p>Art done by Mr.XYZ </p>
+                <br>
+                <p>Rating:4.3</p>
+                <br>
+                <p>Price:$40</p>
+           
+            <button class="buy-button" data-artwork="artwork2">Buy Now</button>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Artwork Details</h2>
+            <p id="artwork-description"></p>
+            <button id="checkout-button">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Show artwork details in a modal
+            $(".buy-button").click(function() {
+                var artwork = $(this).data("artwork");
+                var description = $(this).siblings("p").text();
+                $("#artwork-description").text(description);
+                $("#modal").css("display", "block");
+            });
+
+            // Close the modal when clicking on the close button
+            $(".close").click(function() {
+                $("#modal").css("display", "none");
+            });
+
+            // Close the modal when clicking outside of it
+            $(window).click(function(event) {
+                if (event.target == $("#modal")[0]) {
+                    $("#modal").css("display", "none");
+                }
+            });
+
+            $("#checkout-button").click(function() {
+                alert("Redirecting to checkout page...");
+                // You can add AJAX requests to handle the checkout process here
+            });
+        });
+    </script>
+</body>
+</html>
