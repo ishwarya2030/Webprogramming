@@ -6,7 +6,7 @@
     <title>Art Selling Site</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-       /* CSS Styles for Art Selling Site */
+       
 
 body {
     font-family: Arial, sans-serif;
@@ -41,7 +41,11 @@ header {
 .artwork img {
     width: 100%;
     height: auto;
+    transition: transform 0.3s ease;
 }
+.artwork:hover img {
+            transform: scale(1.1);
+        }
 
 .artwork p {
     margin: 10px 0;
@@ -173,31 +177,43 @@ header {
 
     <script>
         $(document).ready(function() {
-            // Show artwork details in a modal
-            $(".buy-button").click(function() {
-                var artwork = $(this).data("artwork");
-                var description = $(this).siblings("p").text();
-                $("#artwork-description").text(description);
-                $("#modal").css("display", "block");
-            });
+    var artworkDescription; 
+    $(".buy-button").click(function() {
+        var artwork = $(this).data("artwork");
+        artworkDescription = $(this).siblings("p").text(); 
+        $("#artwork-description").text(artworkDescription);
+        $("#modal").css("display", "block");
+    });
 
-            // Close the modal when clicking on the close button
-            $(".close").click(function() {
-                $("#modal").css("display", "none");
-            });
-
-            // Close the modal when clicking outside of it
-            $(window).click(function(event) {
-                if (event.target == $("#modal")[0]) {
-                    $("#modal").css("display", "none");
-                }
-            });
-
-            $("#checkout-button").click(function() {
-                alert("Redirecting to checkout page...");
-                // You can add AJAX requests to handle the checkout process here
-            });
+    $(".close").click(function() {
+        $("#modal").css("display", "none");
+    });
+    $(window).click(function(event) {
+        if (event.target == $("#modal")[0]) {
+            $("#modal").css("display", "none");
+        }
+    });
+    $("#checkout-button").click(function() {
+        alert("Redirecting to checkout page...");
+        
+        $.ajax({
+            type: "POST",
+            url: "checkout.php", 
+            data: {
+                artworkDescription: artworkDescription
+            },
+            success: function(response) {
+                
+                alert("Redirecting to checkout page...");                
+            },
+            error: function(xhr, status, error) {
+                
+                console.error(xhr.responseText);
+            }
         });
+    });
+});
+
     </script>
 </body>
 </html>
